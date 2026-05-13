@@ -1,93 +1,9 @@
 [
   {
-    "idiom": "the pot calling the kettle black",
-    "fonetic": "/ðə pɒt ˈkɔːlɪŋ ðə ˈketl blæk/",
-    "persian": "دیگ به دیگ می‌گوید رویت سیاه",
-    "example": "You're calling me lazy? That's the pot calling the kettle black - you haven't worked all week!",
-    "exampleMeaning": "به من می‌گویی تنبل؟ این شد همان دیگ به دیگ می‌گوید رویت سیاه - تو تمام هفته کار نکردی!"
-  },
-  {
-    "idiom": "break the ice",
-    "fonetic": "/breɪk ði aɪs/",
-    "persian": "یخ را شکستن",
-    "example": "At the party, Sarah told a funny story to break the ice with the new neighbors.",
-    "exampleMeaning": "در مهمانی، سارا یک داستان خنده‌دار تعریف کرد تا با همسایه‌های جدید یخ را بشکند"
-  },
-  {
-    "idiom": "hit the sack",
-    "fonetic": "/hɪt ðə sæk/",
-    "persian": "زدن به گونی (خوابیدن)",
-    "example": "I'm exhausted after work, time to hit the sack and get some sleep.",
-    "exampleMeaning": "بعد از کار خسته هستم، وقت زدن به گونی و کمی خوابیدن است"
-  },
-  {
-    "idiom": "piece of cake",
-    "fonetic": "/piːs əv keɪk/",
-    "persian": "تکه کیک (کار بسیار آسان)",
-    "example": "The math test was a piece of cake - I finished in 15 minutes!",
-    "exampleMeaning": "امتحان ریاضی یک تکه کیک بود - من در ۱۵ دقیقه تمامش کردم!"
-  },
-  {
-    "idiom": "cost an arm and a leg",
-    "fonetic": "/kɒst æn ɑːm ænd ə leɡ/",
-    "persian": "یک دست و یک پا قیمت داشتن",
-    "example": "This new iPhone costs an arm and a leg, I need to save for months.",
-    "exampleMeaning": "این آیفون جدید یک دست و یک پا قیمت دارد، باید ماه‌ها پس‌انداز کنم"
-  },
-  {
-  "idiom": "be in the black",
-  "fonetic": "/bi ɪn ðə blæk/",
-  "persian": "حساب پرپول داشتن",
-  "example": "I wish my accounts were in the black.",
-  "exampleMeaning": "کاش حساب‌هایم پرپول بودند."
-  },
-  {
-  "idiom": "black and white",
-  "fonetic": "/blæk ənd waɪt/",
-  "persian": "سیاه و سفید (خیر و شر , خوب و بد)",
-  "example": "He tries to see everything in black and white although he knows this is impossible.",
-  "exampleMeaning": "او سعی می کند همه چیز را خوب و بد ببیند اگرچه می داند که چنین چیزی غیر ممکن است."
-  },
-  {
-  "idiom": "have a good head on one's shoulders",
-  "fonetic": "/hæv ə ɡʊd hɛd ɒn wʌnz ˈʃəʊldəz/",
-  "persian": "منطقی و باهوش بودن (عقل و شعور داشتن)",
-  "example": "Mary doesn't do well in school, but she has a good head on her shoulders.",
-  "exampleMeaning": "ماری در مدرسه عملکرد خوبی ندارد، اما منطقی و باهوش است."
-  },
-  {
-  "idiom": "Break a leg",
-  "fonetic": "/breɪk ə lɛɡ/",
-  "persian": "موفق باشی",
-  "example": "Before his performance, his friend said 'break a leg'!",
-  "exampleMeaning": "قبل از اجرا، دوستش به او گفت 'موفق باشی'!"
-  },
-  {
-  "idiom": "black sheep",
-  "fonetic": "/blæk ʃiːp/",
-  "persian": "مایه ننگ (نخاله)",
-  "example": "John is the black sheep in his family and is the only member who has not made a success of his life.",
-  "exampleMeaning": "جان مایه ننگ خانواده است و تنها عضوی است که در زندگی به موفقیت نرسیده است."
-  },
-  {
-  "idiom": "do something up brown",
-  "fonetic": "/duː ˈsʌmθɪŋ ʌp braʊn/",
-  "persian": "کاری را عالی انجام دادن (به نحو احسنت کاری انجام دادن)",
-  "example": "Of course I can do it right. I'll really do it up brown.",
-  "exampleMeaning": "البته من می توانم آن کار را درست انجام دهم. من واقعا به نحو احسنت انجامش می‌دهم."
-  },
-  {
-    "idiom": "cut the mustard",
-    "fonetic": "/kʌt ðə ˈmʌstərd/",
-    "persian": "کاری را به خوبی انجام دادن (انتظارات را برآورده کردن, در کاری موفق شدن)",
-    "example": "The boss fired him because he couldn't cut the mustard.",
-    "exampleMeaning": "رییس او را اخراج کرد. چون او نمی توانست کارش را به خوبی انجام دهد."
-  },
-  {
-  "idiom": "bad blood",
-  "fonetic": "/bæd blʌd/",
-  "persian": "خصومت (پدرکشتگی)",
-  "example": "There has always been a lot of bad blood between the two families.",
-  "exampleMeaning": "همیشه بین دو خانواده خصومت زیادی وجود داشته است."
+    "id": "milk someone for something",
+    "phonetic": "/mɪlk ˈsʌmwʌn fɔːr ˈsʌmθɪŋ/",
+    "persianMeaning": "به زور پول گرفتن (کسی را دوشیدن)",
+    "example": "The thief milked me for 20 dollars.",
+    "exampleMeaning": "دزد به زور از من 20 دلار گرفت."
   }
 ]
