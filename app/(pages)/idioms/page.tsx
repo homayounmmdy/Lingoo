@@ -22,6 +22,17 @@ const IdiomsPage: React.FC = () => {
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [playbackSpeed, setPlaybackSpeed] = useState<number>(0.85); // Default speed
+  const [showSpeedControl, setShowSpeedControl] = useState<boolean>(false);
+
+  // Speed options for users
+  const speedOptions = [
+    { label: "🐢 خیلی آهسته", value: 0.5 },
+    { label: "🐢 آهسته", value: 0.7 },
+    { label: "⚡ معمولی", value: 0.85 },
+    { label: "🐇 تند", value: 1.0 },
+    { label: "🐇 خیلی تند", value: 1.2 },
+  ];
 
   // Load and sort idioms alphabetically by English on mount
   useEffect(() => {
@@ -61,38 +72,7 @@ const IdiomsPage: React.FC = () => {
     }
   }, [searchTerm, idioms, sortOrder]);
 
-  // Function to clean phonetic text for better reading
-  const cleanPhoneticForSpeech = (phonetic: string) => {
-    // Replace common phonetic symbols with readable equivalents
-    const replacements: { [key: string]: string } = {
-      '/': '',
-      'ðə': 'the',
-      'ð': 'th',
-      'ə': 'uh',
-      'æ': 'a',
-      'ɪ': 'ih',
-      'ʊ': 'oo',
-      'ʌ': 'uh',
-      'ɒ': 'aw',
-      'ɛ': 'eh',
-      'θ': 'th',
-      'ʃ': 'sh',
-      'ʒ': 'zh',
-      'ʤ': 'j',
-      'ʧ': 'ch',
-      'ŋ': 'ng',
-      'ˈ': '',
-      'ˌ': '',
-    };
-
-    let cleaned = phonetic;
-    for (const [symbol, replacement] of Object.entries(replacements)) {
-      cleaned = cleaned.split(symbol).join(replacement);
-    }
-    return cleaned.trim();
-  };
-
-  // Function to play the idiom pronunciation
+  // Function to play the idiom pronunciation with current speed setting
   const playIdiomSound = () => {
     if (!selectedIdiom) return;
 
@@ -103,20 +83,19 @@ const IdiomsPage: React.FC = () => {
 
     setIsSpeaking(true);
 
-    // Create utterance with the actual idiom text (better than phonetic)
+    // Create utterance with the actual idiom text
     const textToSpeak = selectedIdiom.idiom;
 
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-    // Configure for clear English pronunciation
-    utterance.rate = 0.85; // Slightly slower for clarity
+    // Configure with user-selected speed
+    utterance.rate = playbackSpeed;
     utterance.pitch = 1.0;
     utterance.volume = 1;
     utterance.lang = 'en-US';
 
     // Try to find the best English voice
     const findBestVoice = () => {
-      // Priority order for voice selection
       const voicePriority = [
         'Google UK English Female',
         'Google US English Female',
@@ -159,35 +138,17 @@ const IdiomsPage: React.FC = () => {
     window.speechSynthesis.speak(utterance);
   };
 
-  // Alternative: Play with phonetic cleaned version
-  const playPhoneticCleaned = () => {
-    if (!selectedIdiom) return;
-
-    if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-    }
-
-    setIsSpeaking(true);
-
-    const cleanedPhonetic = cleanPhoneticForSpeech(selectedIdiom.fonetic);
-    const utterance = new SpeechSynthesisUtterance(cleanedPhonetic);
-
-    utterance.rate = 0.7; // Even slower for phonetic
-    utterance.pitch = 1.0;
-    utterance.volume = 1;
-    utterance.lang = 'en-US';
-
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.speak(utterance);
-  };
-
   const stopPronunciation = () => {
     if (window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
     }
+  };
+
+  // Get current speed label
+  const getCurrentSpeedLabel = () => {
+    const option = speedOptions.find(opt => opt.value === playbackSpeed);
+    return option ? option.label : "⚡ معمولی";
   };
 
   const randomizeOrder = () => {
@@ -435,7 +396,7 @@ const IdiomsPage: React.FC = () => {
                         </h2>
                       </div>
 
-                      {/* Enhanced Pronunciation Section with Two Options */}
+                      {/* Enhanced Pronunciation Section with Speed Control */}
                       <div className="rounded-xl p-4 transition-all duration-300 hover:shadow-md" style={{ backgroundColor: '#ffe07320' }}>
                         <div className="text-center mb-3">
                           <span className="text-sm text-gray-500">🔊 Pronunciation</span>
@@ -443,8 +404,62 @@ const IdiomsPage: React.FC = () => {
 
                         <p className="text-gray-700 font-mono text-sm text-center mb-4">{selectedIdiom.fonetic}</p>
 
+                        {/* Speed Control Toggle Button */}
+                        <div className="mb-4">
+                          <button
+                              onClick={() => setShowSpeedControl(!showSpeedControl)}
+                              className="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/50 hover:bg-white transition-all duration-300 border border-[#ffe073]"
+                          >
+                            <span className="text-sm text-gray-600">🎚️ سرعت پخش:</span>
+                            <span className="text-sm font-medium" style={{ color: '#f74697' }}>
+                              {getCurrentSpeedLabel()}
+                            </span>
+                            <svg
+                                className={`w-4 h-4 transition-transform duration-300 ${showSpeedControl ? 'rotate-180' : ''}`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+
+                          {/* Speed Options Dropdown */}
+                          {showSpeedControl && (
+                              <div className="mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden animate-fadeIn">
+                                {speedOptions.map((option) => (
+                                    <button
+                                        key={option.value}
+                                        onClick={() => {
+                                          setPlaybackSpeed(option.value);
+                                          setShowSpeedControl(false);
+                                          // Optional: Auto-play with new speed? Uncomment if desired
+                                          // if (!isSpeaking) playIdiomSound();
+                                        }}
+                                        className={`
+                                    w-full px-3 py-2 text-right transition-all duration-200
+                                    flex items-center justify-between
+                                    ${playbackSpeed === option.value
+                                            ? 'bg-[#f74697]/10 text-[#f74697] font-medium'
+                                            : 'hover:bg-gray-50 text-gray-700'
+                                        }
+                                  `}
+                                    >
+                                      <span>{option.label}</span>
+                                      {playbackSpeed === option.value && (
+                                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                          </svg>
+                                      )}
+                                    </button>
+                                ))}
+                              </div>
+                          )}
+                        </div>
+
+                        {/* Playback Controls */}
                         <div className="flex gap-3 justify-center">
-                          {/* Main Play Button - Reads the actual idiom */}
+                          {/* Main Play Button */}
                           <button
                               onClick={playIdiomSound}
                               disabled={isSpeaking}
@@ -488,7 +503,9 @@ const IdiomsPage: React.FC = () => {
                         </div>
 
                         <div className="text-center mt-3">
-                          <p className="text-xs text-gray-400">✨ با کلیک روی دکمه، تلفظ صحیح اصطلاح را بشنوید</p>
+                          <p className="text-xs text-gray-400">
+                            🎯 با تنظیم سرعت آهسته، کلمات را واضح‌تر بشنوید
+                          </p>
                         </div>
                       </div>
 
