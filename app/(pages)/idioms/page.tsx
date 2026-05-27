@@ -20,6 +20,8 @@ const IdiomsPage: React.FC = () => {
   const [isRandomizing, setIsRandomizing] = useState(false);
   const [diceRolling, setDiceRolling] = useState(false);
   const [displayedIdioms, setDisplayedIdioms] = useState<Idiom[]>([]);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
 
   // Load and sort idioms alphabetically by English on mount
   useEffect(() => {
@@ -30,6 +32,17 @@ const IdiomsPage: React.FC = () => {
     setDisplayedIdioms(sortedIdioms);
     if (sortedIdioms.length > 0) {
       setSelectedIdiom(sortedIdioms[0]);
+    }
+
+    // Load available voices
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices();
+      setAvailableVoices(voices);
+    };
+
+    loadVoices();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
     }
   }, []);
 
@@ -43,22 +56,144 @@ const IdiomsPage: React.FC = () => {
     if (sortOrder === "order") {
       setDisplayedIdioms(filtered);
     } else {
-      // For random, shuffle but keep filter
       const shuffled = [...filtered].sort(() => Math.random() - 0.5);
       setDisplayedIdioms(shuffled);
     }
   }, [searchTerm, idioms, sortOrder]);
 
+  // Function to clean phonetic text for better reading
+  const cleanPhoneticForSpeech = (phonetic: string) => {
+    // Replace common phonetic symbols with readable equivalents
+    const replacements: { [key: string]: string } = {
+      '/': '',
+      'ðə': 'the',
+      'ð': 'th',
+      'ə': 'uh',
+      'æ': 'a',
+      'ɪ': 'ih',
+      'ʊ': 'oo',
+      'ʌ': 'uh',
+      'ɒ': 'aw',
+      'ɛ': 'eh',
+      'θ': 'th',
+      'ʃ': 'sh',
+      'ʒ': 'zh',
+      'ʤ': 'j',
+      'ʧ': 'ch',
+      'ŋ': 'ng',
+      'ˈ': '',
+      'ˌ': '',
+    };
+
+    let cleaned = phonetic;
+    for (const [symbol, replacement] of Object.entries(replacements)) {
+      cleaned = cleaned.split(symbol).join(replacement);
+    }
+    return cleaned.trim();
+  };
+
+  // Function to play the idiom pronunciation
+  const playIdiomSound = () => {
+    if (!selectedIdiom) return;
+
+    // Stop any ongoing speech
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+
+    setIsSpeaking(true);
+
+    // Create utterance with the actual idiom text (better than phonetic)
+    const textToSpeak = selectedIdiom.idiom;
+
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+    // Configure for clear English pronunciation
+    utterance.rate = 0.85; // Slightly slower for clarity
+    utterance.pitch = 1.0;
+    utterance.volume = 1;
+    utterance.lang = 'en-US';
+
+    // Try to find the best English voice
+    const findBestVoice = () => {
+      // Priority order for voice selection
+      const voicePriority = [
+        'Google UK English Female',
+        'Google US English Female',
+        'Google UK English Male',
+        'Google US English Male',
+        'Samantha',
+        'Alex',
+        'Microsoft David',
+        'Microsoft Zira',
+        'en-US',
+        'en-GB'
+      ];
+
+      for (const voiceName of voicePriority) {
+        const voice = availableVoices.find(v =>
+            v.name.includes(voiceName) ||
+            (voiceName === 'en-US' && v.lang === 'en-US') ||
+            (voiceName === 'en-GB' && v.lang === 'en-GB')
+        );
+        if (voice) {
+          utterance.voice = voice;
+          break;
+        }
+      }
+    };
+
+    findBestVoice();
+
+    // Handle speech end
+    utterance.onend = () => {
+      setIsSpeaking(false);
+    };
+
+    utterance.onerror = (event) => {
+      console.error('Speech synthesis failed:', event);
+      setIsSpeaking(false);
+    };
+
+    // Speak the idiom
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Alternative: Play with phonetic cleaned version
+  const playPhoneticCleaned = () => {
+    if (!selectedIdiom) return;
+
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
+
+    setIsSpeaking(true);
+
+    const cleanedPhonetic = cleanPhoneticForSpeech(selectedIdiom.fonetic);
+    const utterance = new SpeechSynthesisUtterance(cleanedPhonetic);
+
+    utterance.rate = 0.7; // Even slower for phonetic
+    utterance.pitch = 1.0;
+    utterance.volume = 1;
+    utterance.lang = 'en-US';
+
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const stopPronunciation = () => {
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+  };
+
   const randomizeOrder = () => {
-    // Start animations
     setDiceRolling(true);
     setIsRandomizing(true);
 
-    // Play dice rolling sound effect (optional)
-    // const audio = new Audio('/dice-roll.mp3');
-    // audio.play();
-
-    // Animate the idiom grid items
     const gridItems = document.querySelectorAll('.idiom-item');
     gridItems.forEach((item, index) => {
       setTimeout(() => {
@@ -69,7 +204,6 @@ const IdiomsPage: React.FC = () => {
       }, index * 20);
     });
 
-    // Simulate loading time for random shuffle
     setTimeout(() => {
       const filtered = idioms.filter(idiom =>
           idiom.idiom.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -79,7 +213,6 @@ const IdiomsPage: React.FC = () => {
       const shuffled = [...filtered].sort(() => Math.random() - 0.5);
       setDisplayedIdioms(shuffled);
 
-      // If there's a selected idiom, find it in new order or select first
       if (selectedIdiom) {
         const found = shuffled.find(i => i.idiom === selectedIdiom.idiom);
         if (found) {
@@ -91,7 +224,6 @@ const IdiomsPage: React.FC = () => {
         setSelectedIdiom(shuffled[0]);
       }
 
-      // Stop animations
       setTimeout(() => {
         setDiceRolling(false);
         setIsRandomizing(false);
@@ -103,22 +235,20 @@ const IdiomsPage: React.FC = () => {
     setSortOrder(mode);
 
     if (mode === "order") {
-      // Back to alphabetical order
       const filtered = idioms.filter(idiom =>
           idiom.idiom.toLowerCase().includes(searchTerm.toLowerCase()) ||
           idiom.persian.includes(searchTerm)
       );
       setDisplayedIdioms(filtered);
     } else {
-      // Random mode with animation
       randomizeOrder();
     }
   };
 
   const nextIdiom = () => {
+    stopPronunciation();
     const currentIndex = displayedIdioms.findIndex(i => i.idiom === selectedIdiom?.idiom);
     if (currentIndex < displayedIdioms.length - 1) {
-      // Animate transition
       const detailCard = document.querySelector('.detail-card');
       if (detailCard) {
         detailCard.classList.add('animate-fadeOut');
@@ -137,9 +267,9 @@ const IdiomsPage: React.FC = () => {
   };
 
   const prevIdiom = () => {
+    stopPronunciation();
     const currentIndex = displayedIdioms.findIndex(i => i.idiom === selectedIdiom?.idiom);
     if (currentIndex > 0) {
-      // Animate transition
       const detailCard = document.querySelector('.detail-card');
       if (detailCard) {
         detailCard.classList.add('animate-fadeOut');
@@ -156,9 +286,9 @@ const IdiomsPage: React.FC = () => {
       }
     }
   };
+
   return (
       <div className="min-h-screen bg-gradient-to-br from-[#f74697]/5 to-[#4097f2]/5" dir="rtl">
-        {/* Header */}
         <header className="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-10 border-b border-[#ffe073]/30">
           <div className="max-w-6xl mx-auto px-4 py-4">
             <div className="flex items-center justify-between flex-wrap gap-4">
@@ -167,7 +297,6 @@ const IdiomsPage: React.FC = () => {
                 <h1 className="text-2xl font-bold" style={{ color: '#f74697' }}>لینگو</h1>
               </Link>
 
-              {/* Sort Controls */}
               <div className="flex gap-2">
                 <button
                     onClick={() => handleSortChange("order")}
@@ -201,7 +330,6 @@ const IdiomsPage: React.FC = () => {
         </header>
 
         <main className="max-w-6xl mx-auto px-4 pt-8">
-          {/* Search Bar */}
           <div className="mb-6">
             <input
                 type="text"
@@ -212,7 +340,6 @@ const IdiomsPage: React.FC = () => {
             />
           </div>
 
-          {/* Loading Overlay for Random Mode */}
           {isRandomizing && (
               <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center">
                 <div className="bg-white rounded-2xl p-8 shadow-2xl text-center border-t-4 border-[#f74697]">
@@ -228,9 +355,7 @@ const IdiomsPage: React.FC = () => {
               </div>
           )}
 
-          {/* Two Column Layout */}
           <div className="grid lg:grid-cols-2 gap-6">
-            {/* Left Side: Grid of Idioms */}
             <div className="bg-white rounded-2xl shadow-xl p-4 border-t-4 border-[#f74697]">
               <div className="flex justify-between items-center mb-4 pb-2 border-b border-[#ffe073]/30">
                 <h2 className="font-bold" style={{ color: '#f74697' }}>📚 لیست اصطلاحات</h2>
@@ -241,8 +366,11 @@ const IdiomsPage: React.FC = () => {
                 {displayedIdioms.map((idiom, index) => (
                     <button
                         key={index}
-                        onClick={() => setSelectedIdiom(idiom)}
-                        className={`cursor-pointer w-full  p-3 rounded-lg transition-all duration-300
+                        onClick={() => {
+                          stopPronunciation();
+                          setSelectedIdiom(idiom);
+                        }}
+                        className={`cursor-pointer w-full p-3 rounded-lg transition-all duration-300
                     ${selectedIdiom?.idiom === idiom.idiom
                             ? "text-white shadow-md scale-102"
                             : "bg-gray-50 hover:bg-[#ffe073]/30 text-gray-700 hover-scale"}
@@ -267,11 +395,9 @@ const IdiomsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Side: Selected Idiom Details */}
             <div className="bg-white rounded-2xl shadow-xl p-6 detail-card transition-all duration-300 border-t-4 border-[#4097f2]">
               {selectedIdiom ? (
                   <>
-                    {/* Navigation Arrows */}
                     <div className="flex justify-between items-center mb-6">
                       <button
                           onClick={prevIdiom}
@@ -298,39 +424,85 @@ const IdiomsPage: React.FC = () => {
                               : "hover:bg-[#ffe073]/30"}
                     `}
                       >
-                     بعدی  ←  
+                        بعدی  ←
                       </button>
                     </div>
 
-                    {/* Idiom Content */}
                     <div className="space-y-4">
-                      {/* English Idiom */}
                       <div className="text-center">
                         <h2 className="text-2xl md:text-3xl font-bold" style={{ color: '#f74697' }}>
                           {selectedIdiom.idiom}
                         </h2>
                       </div>
 
-                      {/* Fonetic */}
-                      <div className="rounded-xl p-4 text-center" style={{ backgroundColor: '#ffe07320' }}>
-                        <div className="text-sm text-gray-500 mb-1">🔊 Pronunciation</div>
-                        <p className="text-gray-700 font-mono text-sm">{selectedIdiom.fonetic}</p>
+                      {/* Enhanced Pronunciation Section with Two Options */}
+                      <div className="rounded-xl p-4 transition-all duration-300 hover:shadow-md" style={{ backgroundColor: '#ffe07320' }}>
+                        <div className="text-center mb-3">
+                          <span className="text-sm text-gray-500">🔊 Pronunciation</span>
+                        </div>
+
+                        <p className="text-gray-700 font-mono text-sm text-center mb-4">{selectedIdiom.fonetic}</p>
+
+                        <div className="flex gap-3 justify-center">
+                          {/* Main Play Button - Reads the actual idiom */}
+                          <button
+                              onClick={playIdiomSound}
+                              disabled={isSpeaking}
+                              className={`
+                              flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300
+                              ${isSpeaking
+                                  ? 'bg-gray-400 text-white cursor-not-allowed'
+                                  : 'bg-[#f74697] text-white hover:bg-[#d63081] hover:shadow-lg transform hover:scale-105'
+                              }
+                            `}
+                          >
+                            {isSpeaking ? (
+                                <>
+                                  <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" strokeDasharray="32"/>
+                                  </svg>
+                                  در حال پخش...
+                                </>
+                            ) : (
+                                <>
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                  </svg>
+                                  <span>شنیدن اصطلاح</span>
+                                </>
+                            )}
+                          </button>
+
+                          {/* Stop Button */}
+                          {isSpeaking && (
+                              <button
+                                  onClick={stopPronunciation}
+                                  className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium bg-red-500 text-white hover:bg-red-600 transition-all duration-300"
+                              >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <rect x="6" y="6" width="12" height="12" rx="1" fill="currentColor" />
+                                </svg>
+                                توقف
+                              </button>
+                          )}
+                        </div>
+
+                        <div className="text-center mt-3">
+                          <p className="text-xs text-gray-400">✨ با کلیک روی دکمه، تلفظ صحیح اصطلاح را بشنوید</p>
+                        </div>
                       </div>
 
-                      {/* Persian Translation */}
                       <div className="rounded-xl p-4 text-center" style={{ backgroundColor: '#f7469720' }}>
                         <div className="text-sm text-gray-500 mb-1">معنی</div>
                         <p className="text-xl font-bold" style={{ color: '#f74697' }}>{selectedIdiom.persian}</p>
                       </div>
 
-                      {/* Example Sentence */}
                       <div className="rounded-xl p-4" style={{ backgroundColor: '#4097f210' }}>
                         <div className="text-sm text-gray-500 mb-2">💡 مثال انگلیسی</div>
                         <div className="text-gray-800 italic leading-relaxed" style={{direction: 'ltr'}}
                         >{selectedIdiom.example}</div>
                       </div>
 
-                      {/* Example Meaning */}
                       <div className="rounded-xl p-4" style={{ backgroundColor: '#ffe07320' }}>
                         <div className="text-sm text-gray-500 mb-1">📝 معنی مثال</div>
                         <p className="text-gray-700">{selectedIdiom.exampleMeaning}</p>
