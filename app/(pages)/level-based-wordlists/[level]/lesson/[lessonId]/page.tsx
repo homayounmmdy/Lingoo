@@ -8,8 +8,9 @@ interface Word {
   word: string;
   meaning: string;
   fonetic: string;
-  example: string;
-  exampleMeaning: string;
+  example?: string;
+  exampleMeaning?: string;
+  moreInfo?: string;
 }
 
 const LessonPage: React.FC = () => {
@@ -234,6 +235,11 @@ const LessonPage: React.FC = () => {
     );
   }
 
+  // Helper function to check if word has example data
+  const hasExample = currentWord.example && currentWord.example.trim() !== "";
+  const hasExampleMeaning = currentWord.exampleMeaning && currentWord.exampleMeaning.trim() !== "";
+  const hasMoreInfo = currentWord.moreInfo && currentWord.moreInfo.trim() !== "";
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100" dir="rtl">
       <header className="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-10">
@@ -301,11 +307,28 @@ const LessonPage: React.FC = () => {
                   <div className="bg-[#ffe073]/20 rounded-xl p-6">
                     <p className="text-2xl font-bold text-[#f74697] mb-4">{currentWord.meaning}</p>
                     
+                    {/* Example Section - only shown if example exists */}
+                    {(hasExample || hasExampleMeaning) && (
                     <div className="border-t border-[#ffe073] pt-4 mt-4">
                       <p className="text-gray-600 mb-2">💡 مثال:</p>
+                        {hasExample && (
                       <p className="text-gray-800 italic" dir="ltr">{currentWord.example}</p>
+                        )}
+                        {hasExampleMeaning && (
                       <p className="text-gray-600 mt-2">{currentWord.exampleMeaning}</p>
+                        )}
+                      </div>
+                    )}
+
+                    {/* More Info Section - only shown if moreInfo exists */}
+                    {hasMoreInfo && (
+                      <div className="border-t border-[#ffe073] pt-4 mt-4">
+                        <p className="text-gray-600 mb-2">📚 اطلاعات بیشتر:</p>
+                        <p className="text-gray-700 leading-relaxed text-right whitespace-pre-wrap">
+                          {currentWord.moreInfo}
+                        </p>
                     </div>
+                    )}
                   </div>
                 </div>
               )}
