@@ -39,5 +39,12 @@
   "fonetic": "/kʌm frʌm/",
   "example": "She comes from Italy.",
   "exampleMeaning": "او اهل ایتالیاست."
-}
+  },
+  {
+  "word": "address",
+  "meaning": "نشانی",
+  "fonetic": "/ˈæ.dres/",
+  "example": "Please tell me your address.",
+  "exampleMeaning": "لطفا نشانیات را به من بگو."
+  },
 ]
