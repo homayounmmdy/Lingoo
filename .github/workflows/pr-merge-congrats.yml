@@ -1,11 +1,12 @@
 name: PR Merge Congratulations
 
 on:
-  pull_request:
+  pull_request_target:
     types: [closed]
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   congratulate:
@@ -13,6 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Check if Secret is Loaded
+        env:
+          CHECK_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$CHECK_TOKEN" ]; then
+            echo "❌ ERROR: The secret GH_PAT is EMPTY or not found!"
+            echo "Please check Settings > Secrets and variables > Actions."
+            exit 1
+          else
+            echo "✅ SUCCESS: The secret GH_PAT is loaded! (Length: ${#CHECK_TOKEN})"
+          fi
+
       - name: Post congratulations comment
         uses: actions/github-script@v8
         with:
@@ -27,9 +40,7 @@ jobs:
             
             Big thanks to @${prAuthor} for your valuable work on this! 🙏
             
-            
             **Merged in:** #${prNumber}
-            
             
             🌟 **تبریک می‌گم!** / **Congratulations!** 🌟
             
