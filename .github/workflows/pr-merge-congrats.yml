@@ -6,7 +6,6 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write 
 
 jobs:
   congratulate:
@@ -17,6 +16,7 @@ jobs:
       - name: Post congratulations comment
         uses: actions/github-script@v8
         with:
+          github-token: ${{ secrets.GH_PAT }}
           script: |
             const prAuthor = context.payload.pull_request.user.login;
             const prNumber = context.payload.pull_request.number;
@@ -27,7 +27,9 @@ jobs:
             
             Big thanks to @${prAuthor} for your valuable work on this! 🙏
             
+            
             **Merged in:** #${prNumber}
+            
             
             🌟 **تبریک می‌گم!** / **Congratulations!** 🌟
             
