@@ -65,13 +65,16 @@ jobs:
               assignees: [commenter]
             });
             
-            // 🎉 ADD REACTION TO USER'S COMMENT 🎉
+            // 🎉 ADD MULTIPLE REACTIONS TO USER'S COMMENT 🎉
+            const emojis = ['rocket', 'hooray', 'laugh', '+1']; // 🚀🎉😄👍
+            for (const emoji of emojis) {
             await github.rest.reactions.createForIssueComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               comment_id: commentId,
-              content: 'rocket' 
+                content: emoji
             });
+            }
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
