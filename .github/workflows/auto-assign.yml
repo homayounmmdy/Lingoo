@@ -25,6 +25,7 @@ jobs:
             
             const issueNumber = context.payload.issue.number;
             const commenter = context.payload.comment.user.login;
+            const commentId = context.payload.comment.id; 
             
             // Get current issue to check assignees
             const { data: issue } = await github.rest.issues.get({
@@ -45,6 +46,13 @@ jobs:
                 body: `Oh no @${commenter}! 😔\n\nThis issue is already assigned to ${assignedTo}.\n\nPlease don’t worry , there are still plenty of other issues waiting for contributors like you. 🙌\n\n👉 Please find another unassigned issue to work on.\n\n**Quick tips:**\n- Check open issues without assignees\n- Read the issue description carefully\n- Comment on the issue before starting if needed\n\nThanks for understanding, and happy coding! 🚀`
               });
               
+              await github.rest.reactions.createForIssueComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: commentId,
+                content: 'eyes' 
+              });
+
               console.log(`Issue #${issueNumber} already assigned to ${assignedTo}`);
               return;
             }
@@ -57,6 +65,14 @@ jobs:
               assignees: [commenter]
             });
             
+            // 🎉 ADD REACTION TO USER'S COMMENT 🎉
+            await github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: commentId,
+              content: 'rocket' 
+            });
+
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
