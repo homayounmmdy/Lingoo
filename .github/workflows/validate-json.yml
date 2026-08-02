@@ -1,0 +1,57 @@
+name: Validate JSON and PR Title
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    paths:
+      - 'public/community/level-based-words-a1-p-2.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check PR Title
+        run: |
+          TITLE="${{ github.event.pull_request.title }}"
+          
+          # Check if the title is exactly "[Good First Issue]"
+          # 💡 TIP: If you want to check if the title *contains* this phrase 
+          # (e.g., "[Good First Issue] content: add new English word"), 
+          # change the condition below to: if [[ "$TITLE" != *"[Good First Issue]"* ]]; then
+          if [ "$TITLE" != "[Good First Issue]" ]; then
+            echo "❌ Error: PR title must be exactly '[Good First Issue]'"
+            echo "Current title: '$TITLE'"
+            exit 1
+          fi
+          
+          echo "✅ PR title is valid."
+
+      - name: Validate JSON and Check for Trailing Commas
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          import re
+          import os
+
+          file_path = os.environ.get('FILE_PATH')
+
+          try:
+              with open(file_path, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              
+          except FileNotFoundError:
+              print(f"❌ Error: File {file_path} not found.")
+              sys.exit(1)
+          except json.JSONDecodeError as e:
+              print(f"❌ Error: Invalid JSON format. Details: {e}")
+              sys.exit(1)
+          except Exception as e:
+              print(f"❌ Error: {e}")
+              sys.exit(1)
+          EOF
+        env:
+          FILE_PATH: public/community/level-based-words-a1-p-2.json
