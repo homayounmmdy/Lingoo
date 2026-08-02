@@ -1,10 +1,15 @@
-name: Validate JSON and PR Title
+name: Validate JSON and Issue/PR Title
 
 on:
   pull_request:
     types: [opened, synchronize, reopened, edited]
     paths:
       - 'public/community/level-based-words-a1-p-2.json'
+
+# Permissions needed to read issue data via GitHub API
+permissions:
+  pull-requests: read
+  issues: read
 
 jobs:
   validate:
@@ -13,21 +18,30 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check PR Title
+      - name: Check Linked Issue or PR Title with Regex
         run: |
-          TITLE="${{ github.event.pull_request.title }}"
+          # 1. Try to extract the linked issue number from the PR body (e.g., "Closes #38")
+          ISSUE_NUM=$(echo "${{ github.event.pull_request.body }}" | grep -oiE '(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)[[:space:]]*#?[[:space:]]*([0-9]+)' | grep -oE '[0-9]+' | tail -n 1)
           
-          # Check if the title is exactly "[Good First Issue]"
-          # 💡 TIP: If you want to check if the title *contains* this phrase 
-          # (e.g., "[Good First Issue] content: add new English word"), 
-          # change the condition below to: if [[ "$TITLE" != *"[Good First Issue]"* ]]; then
-          if [ "$TITLE" != "[Good First Issue]" ]; then
-            echo "❌ Error: PR title must be exactly '[Good First Issue]'"
-            echo "Current title: '$TITLE'"
+          if [ -n "$ISSUE_NUM" ]; then
+            # Fetch the actual Issue title using GitHub CLI
+            TITLE_TO_CHECK=$(gh api repos/${{ github.repository }}/issues/$ISSUE_NUM --jq '.title')
+            echo "🔍 Checking linked Issue #$ISSUE_NUM title: '$TITLE_TO_CHECK'"
+          else
+            # Fallback to PR title if no issue is explicitly linked in the body
+            TITLE_TO_CHECK="${{ github.event.pull_request.title }}"
+            echo "🔍 No linked issue found. Checking PR title instead: '$TITLE_TO_CHECK'"
+          fi
+
+          # 2. Regex check: Allows optional spaces inside the brackets
+          # Matches: "[Good First Issue]", "[ Good First Issue ]", "[  Good   First  Issue ]"
+          if [[ ! "$TITLE_TO_CHECK" =~ \[[:space:]]*Good[[:space:]]+First[[:space:]]+Issue[[:space:]]*\] ]]; then
+            echo "❌ Error: Title must contain '[Good First Issue]' (spaces inside brackets are allowed)."
+            echo "Current title checked: '$TITLE_TO_CHECK'"
             exit 1
           fi
           
-          echo "✅ PR title is valid."
+          echo "✅ Title validation passed!"
 
       - name: Validate JSON and Check for Trailing Commas
         run: |
@@ -43,15 +57,6 @@ jobs:
               with open(file_path, 'r', encoding='utf-8') as f:
                   content = f.read()
               
-          except FileNotFoundError:
-              print(f"❌ Error: File {file_path} not found.")
-              sys.exit(1)
-          except json.JSONDecodeError as e:
-              print(f"❌ Error: Invalid JSON format. Details: {e}")
-              sys.exit(1)
-          except Exception as e:
-              print(f"❌ Error: {e}")
-              sys.exit(1)
-          EOF
-        env:
-          FILE_PATH: public/community/level-based-words-a1-p-2.json
+              # Check for trailing comma: a comma followed by optional whitespace and then ] or }
+              if re.search(r',\s*[\]\}]', content):
+                  print("❌ Error: Trailing
