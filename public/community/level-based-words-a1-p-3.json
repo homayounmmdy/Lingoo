@@ -1,0 +1,233 @@
+[
+  {
+    "word": "man",
+    "meaning": "مرد",
+    "fonetic": "/mæn/",
+    "example": "The man is waiting for the bus.",
+    "exampleMeaning": "مرد منتظر اتوبوس است."
+  },
+  {
+    "word": "woman",
+    "meaning": "زن",
+    "fonetic": "/ˈwʊmən/",
+    "example": "The woman is buying vegetables.",
+    "exampleMeaning": "زن دارد سبزیجات می‌خرد."
+  },
+  {
+    "word": "girl",
+    "meaning": "دختر",
+    "fonetic": "/ɡɜːrl/",
+    "example": "The girl is playing with her doll.",
+    "exampleMeaning": "دختر دارد با عروسکش بازی می‌کند."
+  },
+  {
+    "word": "boy",
+    "meaning": "پسر",
+    "fonetic": "/bɔɪ/",
+    "example": "The boy is riding a bicycle.",
+    "exampleMeaning": "پسر دارد دوچرخه سواری می‌کند."
+  },
+  {
+    "word": "person",
+    "meaning": "فرد",
+    "fonetic": "/ˈpɜːrsən/",
+    "example": "Every person has their own story.",
+    "exampleMeaning": "هر فردی داستان خودش را دارد."
+  },
+  {
+    "word": "people",
+    "meaning": "مردم",
+    "fonetic": "/ˈpiːpəl/",
+    "example": "Many people visit this park every day.",
+    "exampleMeaning": "هر روز مردم زیادی از این پارک بازدید می‌کنند."
+  },
+  {
+    "word": "Mr.",
+    "meaning": "آقا",
+    "fonetic": "/ˈmɪstər/",
+    "example": "Mr. Smith is our English teacher.",
+    "exampleMeaning": "آقای اسمیت معلم انگلیسی ما است."
+  },
+  {
+    "word": "Mrs.",
+    "meaning": "خانم",
+    "fonetic": "/ˈmɪsɪz/",
+    "example": "Mrs. Brown lives next door.",
+    "exampleMeaning": "خانم براون در همسایگی ما زندگی می‌کند."
+  },
+  {
+    "word": "my",
+    "meaning": "[صفت ملکی اول شخص مفرد]",
+    "fonetic": "/maɪ/",
+    "example": "My car is parked outside.",
+    "exampleMeaning": "ماشین من بیرون پارک شده است."
+  },
+  {
+    "word": "your",
+    "meaning": "[صفت ملکی دوم شخص مفرد و جمع]",
+    "fonetic": "/jʊr/",
+    "example": "Your bag is on the chair.",
+    "exampleMeaning": "کیف تو روی صندلی است."
+  },
+  {
+    "word": "his",
+    "meaning": "[صفت ملکی سوم شخص مفرد مذکر]",
+    "fonetic": "/hɪz/",
+    "example": "His phone is ringing.",
+    "exampleMeaning": "تلفن او دارد زنگ می‌خورد."
+  },
+  {
+    "word": "her",
+    "meaning": "[صفت ملکی سوم شخص مفرد مونث]",
+    "fonetic": "/hɜːr/",
+    "example": "Her dress is beautiful.",
+    "exampleMeaning": "لباس او زیبا است."
+  },
+  {
+    "word": "our",
+    "meaning": "[صفت ملکی اول شخص جمع]",
+    "fonetic": "/ɑʊr/",
+    "example": "Our school is very big.",
+    "exampleMeaning": "مدرسه ما خیلی بزرگ است."
+  },
+  {
+    "word": "their",
+    "meaning": "[صفت ملکی سوم شخص جمع]",
+    "fonetic": "/ðer/",
+    "example": "Their garden is full of flowers.",
+    "exampleMeaning": "باغ آن‌ها پر از گل است."
+  },
+  {
+    "word": "house",
+    "meaning": "خانه",
+    "fonetic": "/haʊs/",
+    "example": "They bought a new house last year.",
+    "exampleMeaning": "آن‌ها سال گذشته یک خانه جدید خریدند."
+  },
+  {
+    "word": "home",
+    "meaning": "خانه",
+    "fonetic": "/hoʊm/",
+    "example": "I usually get home at six.",
+    "exampleMeaning": "من معمولاً ساعت شش به خانه می‌رسم."
+  },
+  {
+    "word": "kitchen",
+    "meaning": "آشپزخانه",
+    "fonetic": "/ˈkɪtʃən/",
+    "example": "Mom is cooking in the kitchen.",
+    "exampleMeaning": "مامان دارد در آشپزخانه غذا می‌پزد."
+  },
+  {
+    "word": "living room",
+    "meaning": "اتاق نشیمن",
+    "fonetic": "/ˈlɪvɪŋ rʊm/",
+    "example": "We watch TV in the living room.",
+    "exampleMeaning": "ما در اتاق نشیمن تلویزیون تماشا می‌کنیم."
+  },
+  {
+    "word": "door",
+    "meaning": "در",
+    "fonetic": "/dɔːr/",
+    "example": "Please close the door.",
+    "exampleMeaning": "لطفاً در را ببند."
+  },
+  {
+    "word": "window",
+    "meaning": "پنجره",
+    "fonetic": "/ˈwɪndoʊ/",
+    "example": "She opened the window for fresh air.",
+    "exampleMeaning": "او پنجره را برای هوای تازه باز کرد."
+  },
+  {
+    "word": "wall",
+    "meaning": "دیوار",
+    "fonetic": "/wɔːl/",
+    "example": "There is a clock on the wall.",
+    "exampleMeaning": "یک ساعت روی دیوار است."
+  },
+  {
+    "word": "floor",
+    "meaning": "کف",
+    "fonetic": "/flɔːr/",
+    "example": "The book fell on the floor.",
+    "exampleMeaning": "کتاب روی کف زمین افتاد."
+  },
+  {
+    "word": "bathroom",
+    "meaning": "حمام - دستشویی",
+    "fonetic": "/ˈbæθruːm/",
+    "example": "The bathroom is upstairs.",
+    "exampleMeaning": "حمام در طبقه بالا است."
+  },
+  {
+    "word": "bedroom",
+    "meaning": "اتاق‌خواب",
+    "fonetic": "/ˈbedrʊm/",
+    "example": "My bedroom has a big window.",
+    "exampleMeaning": "اتاق‌خواب من یک پنجره بزرگ دارد."
+  },
+  {
+    "word": "dining room",
+    "meaning": "اتاق غذاخوری",
+    "fonetic": "/ˈdaɪnɪŋ ruːm/",
+    "example": "We eat dinner in the dining room.",
+    "exampleMeaning": "ما شام را در اتاق غذاخوری می‌خوریم."
+  },
+  {
+    "word": "toilet",
+    "meaning": "توالت",
+    "fonetic": "/ˈtɔɪlət/",
+    "example": "The toilet is next to the bathroom.",
+    "exampleMeaning": "توالت کنار حمام است."
+  },
+  {
+    "word": "shower",
+    "meaning": "دوش",
+    "fonetic": "/ˈʃaʊər/",
+    "example": "I take a shower every morning.",
+    "exampleMeaning": "من هر صبح دوش می‌گیرم."
+  },
+  {
+    "word": "bed",
+    "meaning": "تختخواب",
+    "fonetic": "/bed/",
+    "example": "The bed is very comfortable.",
+    "exampleMeaning": "تختخواب خیلی راحت است."
+  },
+  {
+    "word": "refrigerator",
+    "meaning": "یخچال",
+    "fonetic": "/rɪˈfrɪdʒəreɪtər/",
+    "example": "There is some milk in the refrigerator.",
+    "exampleMeaning": "کمی شیر در یخچال است."
+  },
+  {
+    "word": "television",
+    "meaning": "تلویزیون",
+    "fonetic": "/ˈteləvɪʒən/",
+    "example": "The children are watching television.",
+    "exampleMeaning": "بچه‌ها دارند تلویزیون تماشا می‌کنند."
+  },
+  {
+    "word": "bath",
+    "meaning": "حمام",
+    "fonetic": "/bɑːθ/",
+    "example": "The baby is having a bath.",
+    "exampleMeaning": "بچه دارد حمام می‌کند."
+  },
+  {
+    "word": "swimming pool",
+    "meaning": "استخر شنا",
+    "fonetic": "/ˈswɪmɪŋ puːl/",
+    "example": "The hotel has a large swimming pool.",
+    "exampleMeaning": "هتل یک استخر شنای بزرگ دارد."
+  },
+  {
+    "word": "Miss",
+    "meaning": "خانم",
+    "fonetic": "/mɪs/",
+    "example": "Miss Johnson is my math teacher.",
+    "exampleMeaning": "خانم جانسون معلم ریاضی من است."
+  }
+]
