@@ -3,14 +3,238 @@
     "word": "zero",
     "meaning": "صفر",
     "fonetic": "/ˈzɪroʊ/",
-    "example": "Mike’s chances of winning are virtually zero.",
-    "exampleMeaning": "شانس پیروزی \"مایک\"، تقریباً صفر است."
+    "example": "The temperature dropped to zero last night.",
+    "exampleMeaning": "دیشب دما به صفر رسید."
+  },
+  {
+    "word": "one",
+    "meaning": "یک",
+    "fonetic": "/wʌn/",
+    "example": "I only have one brother.",
+    "exampleMeaning": "من فقط یک برادر دارم."
+  },
+  {
+    "word": "two",
+    "meaning": "دو",
+    "fonetic": "/tuː/",
+    "example": "She has two cats at home.",
+    "exampleMeaning": "او دو گربه در خانه دارد."
+  },
+  {
+    "word": "three",
+    "meaning": "سه",
+    "fonetic": "/θriː/",
+    "example": "There are three apples on the table.",
+    "exampleMeaning": "سه سیب روی میز است."
+  },
+  {
+    "word": "four",
+    "meaning": "چهار",
+    "fonetic": "/fɔːr/",
+    "example": "The chair has four legs.",
+    "exampleMeaning": "صندلی چهار پایه دارد."
+  },
+  {
+    "word": "five",
+    "meaning": "پنج",
+    "fonetic": "/faɪv/",
+    "example": "I wake up at five o'clock.",
+    "exampleMeaning": "من ساعت پنج بیدار می‌شوم."
   },
   {
     "word": "six",
     "meaning": "شش",
     "fonetic": "/sɪks/",
-    "example": "The game starts at six p.m.",
-    "exampleMeaning": "بازی ساعت شش عصر شروع میشود."
+    "example": "He has six pencils in his bag.",
+    "exampleMeaning": "او شش مداد در کیفش دارد."
+  },
+  {
+    "word": "seven",
+    "meaning": "هفت",
+    "fonetic": "/ˈsevən/",
+    "example": "There are seven days in a week.",
+    "exampleMeaning": "هفت روز در یک هفته وجود دارد."
+  },
+  {
+    "word": "eight",
+    "meaning": "هشت",
+    "fonetic": "/eɪt/",
+    "example": "The octopus has eight arms.",
+    "exampleMeaning": "اختاپوس هشت بازو دارد."
+  },
+  {
+    "word": "nine",
+    "meaning": "نه",
+    "fonetic": "/naɪn/",
+    "example": "She scored nine points in the game.",
+    "exampleMeaning": "او در بازی نه امتیاز کسب کرد."
+  },
+  {
+    "word": "ten",
+    "meaning": "ده",
+    "fonetic": "/ten/",
+    "example": "I have ten fingers.",
+    "exampleMeaning": "من ده انگشت دارم."
+  },
+  {
+    "word": "eleven",
+    "meaning": "یازده",
+    "fonetic": "/ɪˈlevən/",
+    "example": "The meeting starts at eleven o'clock.",
+    "exampleMeaning": "جلسه ساعت یازده شروع می‌شود."
+  },
+  {
+    "word": "twelve",
+    "meaning": "دوازده",
+    "fonetic": "/twelv/",
+    "example": "There are twelve months in a year.",
+    "exampleMeaning": "دوازده ماه در یک سال وجود دارد."
+  },
+  {
+    "word": "thirteen",
+    "meaning": "سیزده",
+    "fonetic": "/θɜːrˈtiːn/",
+    "example": "Thirteen is considered an unlucky number.",
+    "exampleMeaning": "سیزده یک عدد بدشانسی در نظر گرفته می‌شود."
+  },
+  {
+    "word": "fourteen",
+    "meaning": "چهارده",
+    "fonetic": "/ˌfɔːrˈtiːn/",
+    "example": "My cousin is fourteen years old.",
+    "exampleMeaning": "پسرعموی من چهارده سال دارد."
+  },
+  {
+    "word": "fifteen",
+    "meaning": "پانزده",
+    "fonetic": "/ˌfɪfˈtiːn/",
+    "example": "She bought fifteen flowers.",
+    "exampleMeaning": "او پانزده گل خرید."
+  },
+  {
+    "word": "sixteen",
+    "meaning": "شانزده",
+    "fonetic": "/sɪksˈtiːn/",
+    "example": "He will turn sixteen next week.",
+    "exampleMeaning": "او هفته آینده شانزده ساله می‌شود."
+  },
+  {
+    "word": "seventeen",
+    "meaning": "هفده",
+    "fonetic": "/ˌsevənˈtiːn/",
+    "example": "There are seventeen students in the class.",
+    "exampleMeaning": "هفده دانش‌آموز در کلاس هستند."
+  },
+  {
+    "word": "eighteen",
+    "meaning": "هجده",
+    "fonetic": "/ˌeɪˈtiːn/",
+    "example": "In many countries, you can vote at eighteen.",
+    "exampleMeaning": "در بسیاری از کشورها، در هجده سالگی می‌توانید رای دهید."
+  },
+  {
+    "word": "nineteen",
+    "meaning": "نوزده",
+    "fonetic": "/naɪnˈtiːn/",
+    "example": "The book has nineteen chapters.",
+    "exampleMeaning": "کتاب نوزده فصل دارد."
+  },
+  {
+    "word": "twenty",
+    "meaning": "بیست",
+    "fonetic": "/ˈtwenti/",
+    "example": "I need twenty dollars.",
+    "exampleMeaning": "من بیست دلار نیاز دارم."
+  },
+  {
+    "word": "father",
+    "meaning": "پدر",
+    "fonetic": "/ˈfɑːðər/",
+    "example": "My father works in a hospital.",
+    "exampleMeaning": "پدر من در بیمارستان کار می‌کند."
+  },
+  {
+    "word": "mother",
+    "meaning": "مادر",
+    "fonetic": "/ˈmʌðər/",
+    "example": "Her mother is a teacher.",
+    "exampleMeaning": "مادر او معلم است."
+  },
+  {
+    "word": "mom",
+    "meaning": "مامان",
+    "fonetic": "/mɑːm/",
+    "example": "Mom, can I go outside?",
+    "exampleMeaning": "مامان، می‌توانم بیرون بروم؟"
+  },
+  {
+    "word": "dad",
+    "meaning": "بابا",
+    "fonetic": "/dæd/",
+    "example": "Dad is reading a newspaper.",
+    "exampleMeaning": "بابا دارد روزنامه می‌خواند."
+  },
+  {
+    "word": "sister",
+    "meaning": "خواهر",
+    "fonetic": "/ˈsɪstər/",
+    "example": "My sister likes to draw.",
+    "exampleMeaning": "خواهر من نقاشی کشیدن را دوست دارد."
+  },
+  {
+    "word": "brother",
+    "meaning": "برادر",
+    "fonetic": "/ˈbrʌðər/",
+    "example": "His brother plays football.",
+    "exampleMeaning": "برادر او فوتبال بازی می‌کند."
+  },
+  {
+    "word": "son",
+    "meaning": "(فرزند) پسر",
+    "fonetic": "/sʌn/",
+    "example": "Their son is very smart.",
+    "exampleMeaning": "پسر آن‌ها خیلی باهوش است."
+  },
+  {
+    "word": "daughter",
+    "meaning": "(فرزند) دختر",
+    "fonetic": "/ˈdɔːtər/",
+    "example": "My daughter loves music.",
+    "exampleMeaning": "دختر من عاشق موسیقی است."
+  },
+  {
+    "word": "baby",
+    "meaning": "بچه",
+    "fonetic": "/ˈbeɪbi/",
+    "example": "The baby is sleeping.",
+    "exampleMeaning": "بچه خوابیده است."
+  },
+  {
+    "word": "wife",
+    "meaning": "همسر",
+    "fonetic": "/waɪf/",
+    "example": "His wife is a doctor.",
+    "exampleMeaning": "همسر او پزشک است."
+  },
+  {
+    "word": "husband",
+    "meaning": "شوهر",
+    "fonetic": "/ˈhʌzbənd/",
+    "example": "Her husband cooks very well.",
+    "exampleMeaning": "شوهر او خیلی خوب آشپزی می‌کند."
+  },
+  {
+    "word": "child",
+    "meaning": "کودک",
+    "fonetic": "/tʃaɪld/",
+    "example": "Every child needs love and care.",
+    "exampleMeaning": "هر کودکی به عشق و مراقبت نیاز دارد."
+  },
+  {
+    "word": "family",
+    "meaning": "خانواده",
+    "fonetic": "/ˈfæməli/",
+    "example": "I spend weekends with my family.",
+    "exampleMeaning": "آخر هفته‌ها را با خانواده‌ام می‌گذرانم."
   }
 ]
