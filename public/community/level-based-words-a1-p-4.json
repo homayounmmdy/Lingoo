@@ -1,0 +1,226 @@
+[
+  {
+    "word": "down",
+    "meaning": "پایین",
+    "fonetic": "/daʊn/",
+    "example": "The cat jumped down from the tree.",
+    "exampleMeaning": "گربه از درخت پایین پرید."
+  },
+  {
+    "word": "middle",
+    "meaning": "وسط",
+    "fonetic": "/ˈmɪdəl/",
+    "example": "He is standing in the middle of the street.",
+    "exampleMeaning": "او وسط خیابان ایستاده است."
+  },
+  {
+    "word": "inside",
+    "meaning": "داخل",
+    "fonetic": "/ɪnˈsaɪd/",
+    "example": "It is warm inside the house.",
+    "exampleMeaning": "داخل خانه گرم است."
+  },
+  {
+    "word": "outside",
+    "meaning": "بیرون",
+    "fonetic": "/aʊtˈsaɪd/",
+    "example": "The children are playing outside.",
+    "exampleMeaning": "بچه‌ها بیرون دارند بازی می‌کنند."
+  },
+  {
+    "word": "here",
+    "meaning": "اینجا",
+    "fonetic": "/hɪr/",
+    "example": "Come here and sit next to me.",
+    "exampleMeaning": "بیا اینجا و کنار من بنشین."
+  },
+  {
+    "word": "there",
+    "meaning": "[وجود داشتن]",
+    "fonetic": "/ðer/",
+    "example": "There is a book on the table.",
+    "exampleMeaning": "یک کتاب روی میز وجود دارد."
+  },
+  {
+    "word": "where",
+    "meaning": "کجا",
+    "fonetic": "/wer/",
+    "example": "Where do you live?",
+    "exampleMeaning": "کجا زندگی می‌کنی؟"
+  },
+  {
+    "word": "behind",
+    "meaning": "پشت",
+    "fonetic": "/bɪˈhaɪnd/",
+    "example": "The garden is behind the house.",
+    "exampleMeaning": "باغ پشت خانه است."
+  },
+  {
+    "word": "between",
+    "meaning": "بین",
+    "fonetic": "/bɪˈtwiːn/",
+    "example": "The bank is between the post office and the bakery.",
+    "exampleMeaning": "بانک بین اداره پست و نانوایی است."
+  },
+  {
+    "word": "under",
+    "meaning": "زیر",
+    "fonetic": "/ˈʌndər/",
+    "example": "The cat is sleeping under the table.",
+    "exampleMeaning": "گربه زیر میز خوابیده است."
+  },
+  {
+    "word": "above",
+    "meaning": "بالای",
+    "fonetic": "/əˈbʌv/",
+    "example": "There is a lamp above the desk.",
+    "exampleMeaning": "یک چراغ بالای میز است."
+  },
+  {
+    "word": "near",
+    "meaning": "نزدیک",
+    "fonetic": "/nɪr/",
+    "example": "My house is near the school.",
+    "exampleMeaning": "خانه من نزدیک مدرسه است."
+  },
+  {
+    "word": "next",
+    "meaning": "بعد",
+    "fonetic": "/nekst/",
+    "example": "The next train arrives in ten minutes.",
+    "exampleMeaning": "قطار بعدی ده دقیقه دیگر می‌رسد."
+  },
+  {
+    "word": "right",
+    "meaning": "درست",
+    "fonetic": "/raɪt/",
+    "example": "Your answer is right.",
+    "exampleMeaning": "جواب تو درست است."
+  },
+  {
+    "word": "in",
+    "meaning": "در",
+    "fonetic": "/ɪn/",
+    "example": "The keys are in my pocket.",
+    "exampleMeaning": "کلیدها در جیب من هستند."
+  },
+  {
+    "word": "into",
+    "meaning": "(به) داخل",
+    "fonetic": "/ˈɪntuː/",
+    "example": "He walked into the room quietly.",
+    "exampleMeaning": "او آرام به داخل اتاق رفت."
+  },
+  {
+    "word": "train",
+    "meaning": "قطار",
+    "fonetic": "/treɪn/",
+    "example": "We traveled to Tehran by train.",
+    "exampleMeaning": "ما با قطار به تهران سفر کردیم."
+  },
+  {
+    "word": "plane",
+    "meaning": "هواپیما",
+    "fonetic": "/pleɪn/",
+    "example": "The plane is flying above the clouds.",
+    "exampleMeaning": "هواپیما بالای ابرها پرواز می‌کند."
+  },
+  {
+    "word": "taxi",
+    "meaning": "تاکسی",
+    "fonetic": "/ˈtæksi/",
+    "example": "We took a taxi to the airport.",
+    "exampleMeaning": "ما با تاکسی به فرودگاه رفتیم."
+  },
+  {
+    "word": "car",
+    "meaning": "خودرو",
+    "fonetic": "/kɑːr/",
+    "example": "His car is parked in front of the house.",
+    "exampleMeaning": "خودروی او جلوی خانه پارک شده است."
+  },
+  {
+    "word": "ride",
+    "meaning": "سواری کردن",
+    "fonetic": "/raɪd/",
+    "example": "I like to ride my bike in the park.",
+    "exampleMeaning": "دوست دارم در پارک دوچرخه‌ام را سوار شوم."
+  },
+  {
+    "word": "ticket",
+    "meaning": "بلیت",
+    "fonetic": "/ˈtɪkət/",
+    "example": "I bought a ticket for the concert.",
+    "exampleMeaning": "من یک بلیت برای کنسرت خریدم."
+  },
+  {
+    "word": "travel",
+    "meaning": "سفر کردن",
+    "fonetic": "/ˈtrævəl/",
+    "example": "They love to travel around the world.",
+    "exampleMeaning": "آن‌ها عاشق سفر کردن به دور دنیا هستند."
+  },
+  {
+    "word": "boat",
+    "meaning": "قایق",
+    "fonetic": "/boʊt/",
+    "example": "The boat is sailing on the lake.",
+    "exampleMeaning": "قایق روی دریاچه در حال حرکت است."
+  },
+  {
+    "word": "bus",
+    "meaning": "اتوبوس",
+    "fonetic": "/bʌs/",
+    "example": "I go to work by bus.",
+    "exampleMeaning": "من با اتوبوس به سر کار می‌روم."
+  },
+  {
+    "word": "drive",
+    "meaning": "رانندگی کردن",
+    "fonetic": "/draɪv/",
+    "example": "She drives to work every day.",
+    "exampleMeaning": "او هر روز تا سر کار رانندگی می‌کند."
+  },
+  {
+    "word": "you",
+    "meaning": "[ضمیر دوم شخص مفعولی مفرد و جمع]",
+    "fonetic": "/juː/",
+    "example": "I will call you tomorrow.",
+    "exampleMeaning": "فردا به تو زنگ می‌زنم."
+  },
+  {
+    "word": "him",
+    "meaning": "[ضمیر مفعولی سوم شخص مفرد مذکر]",
+    "fonetic": "/hɪm/",
+    "example": "I saw him at the store yesterday.",
+    "exampleMeaning": "دیروز او را در فروشگاه دیدم."
+  },
+  {
+    "word": "her",
+    "meaning": "[ضمیر مفعولی سوم شخص مفرد مونث]",
+    "fonetic": "/hɜːr/",
+    "example": "I gave her a beautiful gift.",
+    "exampleMeaning": "به او یک هدیه زیبا دادم."
+  },
+  {
+    "word": "them",
+    "meaning": "[ضمیر مفعولی سوم شخص جمع]",
+    "fonetic": "/ðem/",
+    "example": "I invited them to my party.",
+    "exampleMeaning": "آن‌ها را به مهمانی‌ام دعوت کردم."
+  },
+  {
+    "word": "us",
+    "meaning": "[ضمیر مفعولی اول شخص جمع]",
+    "fonetic": "/ʌs/",
+    "example": "She told us a funny story.",
+    "exampleMeaning": "او برای ما یک داستان خنده‌دار تعریف کرد."
+  },
+  {
+    "word": "stop",
+    "meaning": "ایستگاه",
+    "fonetic": "/stɑːp/",
+    "example": "The bus stop is at the end of the street.",
+    "exampleMeaning": "ایستگاه اتوبوس در انتهای خیابان است."
+  }
+]
