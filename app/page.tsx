@@ -2,245 +2,214 @@
 
 import Link from "next/link";
 import React from "react";
-import Footer from "./components/Footer";
+import LevelsOverview from "./components/LevelsOverview";
 
 const HomePage: React.FC = () => {
   return (
-      <div
-          className="min-h-screen bg-gradient-to-br from-[#f74697]/5 to-[#4097f2]/5"
-          dir="rtl"
-      >
-        {/* Header */}
-        <header className="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-10 border-b border-[#ffe073]/30">
-          <div className="max-w-6xl mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="text-3xl">🦜</span>
-                <h1 className="text-2xl font-bold" style={{ color: "#f74697" }}>
-                  لینگو
-                </h1>
-              </div>
-              <div className="text-sm text-gray-500">یادگیری زبان با لذت</div>
+    <div
+      className="min-h-screen bg-gradient-to-br from-[#f74697]/5 to-[#4097f2]/5"
+      dir="rtl"
+    >
+      {/* Header */}
+      <header className="bg-white/95 backdrop-blur-sm shadow-md sticky top-0 z-10 border-b border-[#ffe073]/30">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="text-3xl">🦜</span>
+              <h1 className="text-2xl font-bold" style={{ color: "#f74697" }}>
+                لینگو
+              </h1>
             </div>
+            <div className="text-sm text-gray-500">یادگیری زبان با لذت</div>
           </div>
-        </header>
+        </div>
+      </header>
 
-        <main className="max-w-6xl mx-auto px-4 pt-12">
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <div className="text-6xl mb-4">🌟</div>
-            <h2
-                className="text-3xl md:text-4xl font-bold mb-3"
-                style={{ color: "#f74697" }}
-            >
-              به لینگو خوش آمدید!
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              با روشی سرگرم‌کننده و جذاب، اصطلاحات و گرامر انگلیسی را یاد بگیرید
+      <main className="max-w-6xl mx-auto px-4 pt-12">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <div className="text-6xl mb-4">🌟</div>
+          <h2
+            className="text-3xl md:text-4xl font-bold mb-3"
+            style={{ color: "#f74697" }}
+          >
+            به لینگو خوش آمدید!
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            با روشی سرگرم‌کننده و جذاب، اصطلاحات و گرامر انگلیسی را یاد بگیرید
+          </p>
+        </div>
+
+        {/* Three Main Sections */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Trivia Section */}
+          <Link href="/trivia" className="group">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#f74697] h-full">
+              <div className="p-8 text-center">
+                <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
+                  🎯
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{ color: "#f74697" }}
+                >
+                  مسابقه زبان انگلیسی
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  دانش خود را با سوالات چهارگزینه‌ای محک بزنید و نکات جالب یاد
+                  بگیرید!
+                </p>
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
+                  style={{ color: "#f74697", backgroundColor: "#f7469710" }}
+                >
+                  <span>شروع مسابقه</span>
+                  <span className="text-lg">←</span>
+                </div>
+              </div>
+              {/* Features */}
+              <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
+                <span>📋 {">"} ۲۰ سوال</span>
+                <span>💡 نکات آموزشی</span>
+                <span>⭐ امتیازدهی</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Idioms Section */}
+          <Link href="/idioms" className="group">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#4097f2] h-full">
+              <div className="p-8 text-center">
+                <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
+                  📚
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{ color: "#4097f2" }}
+                >
+                  دیکشنری اصطلاحات
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  بیش از ۱۰۰ اصطلاح کاربردی انگلیسی با معنی فارسی و مثال‌های
+                  واقعی!
+                </p>
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
+                  style={{ color: "#4097f2", backgroundColor: "#4097f210" }}
+                >
+                  <span>مشاهده اصطلاحات</span>
+                  <span className="text-lg">←</span>
+                </div>
+              </div>
+              {/* Features */}
+              <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
+                <span>🔊 تلفظ صوتی</span>
+                <span>📖 مثال‌های کاربردی</span>
+                <span>🎲 حالت تصادفی</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Level-Based Wordlists Section - NEW */}
+          <Link href="/level-based-wordlists" className="group">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#10B981] h-full">
+              <div className="p-8 text-center">
+                <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
+                  📖
+                </div>
+                <h3
+                  className="text-2xl font-bold mb-3"
+                  style={{ color: "#10B981" }}
+                >
+                  کلمات سطح‌بندی شده
+                </h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  کلمات و اصطلاحات را بر اساس سطح (A1 تا C1) به صورت درس به درس
+                  یاد بگیرید!
+                </p>
+                <div
+                  className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
+                  style={{ color: "#10B981", backgroundColor: "#10B98110" }}
+                >
+                  <span>شروع یادگیری</span>
+                  <span className="text-lg">←</span>
+                </div>
+              </div>
+              {/* Features */}
+              <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
+                <span>📊 ۵ سطح آموزشی</span>
+                <span>📚 بیش از ۱۰۰ درس</span>
+                <span>🏆 سیستم پیشرفت</span>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Level Overview Section */}
+        <LevelsOverview />
+
+        {/* Additional Info Cards */}
+        <div className="mt-16 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
+            <div className="text-2xl mb-2">🎓</div>
+            <p className="text-sm text-gray-600">
+              یادگیری تعاملی و سرگرم‌کننده
             </p>
           </div>
-
-          {/* Three Main Sections */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Trivia Section */}
-            <Link href="/trivia" className="group">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#f74697] h-full">
-                <div className="p-8 text-center">
-                  <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
-                    🎯
-                  </div>
-                  <h3
-                      className="text-2xl font-bold mb-3"
-                      style={{ color: "#f74697" }}
-                  >
-                    مسابقه زبان انگلیسی
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    دانش خود را با سوالات چهارگزینه‌ای محک بزنید و نکات جالب یاد
-                    بگیرید!
-                  </p>
-                  <div
-                      className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
-                      style={{ color: "#f74697", backgroundColor: "#f7469710" }}
-                  >
-                    <span>شروع مسابقه</span>
-                    <span className="text-lg">←</span>
-                  </div>
-                </div>
-                {/* Features */}
-                <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
-                  <span>📋 {">"} ۲۰ سوال</span>
-                  <span>💡 نکات آموزشی</span>
-                  <span>⭐ امتیازدهی</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Idioms Section */}
-            <Link href="/idioms" className="group">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#4097f2] h-full">
-                <div className="p-8 text-center">
-                  <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
-                    📚
-                  </div>
-                  <h3
-                      className="text-2xl font-bold mb-3"
-                      style={{ color: "#4097f2" }}
-                  >
-                    دیکشنری اصطلاحات
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    بیش از ۱۰۰ اصطلاح کاربردی انگلیسی با معنی فارسی و مثال‌های
-                    واقعی!
-                  </p>
-                  <div
-                      className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
-                      style={{ color: "#4097f2", backgroundColor: "#4097f210" }}
-                  >
-                    <span>مشاهده اصطلاحات</span>
-                    <span className="text-lg">←</span>
-                  </div>
-                </div>
-                {/* Features */}
-                <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
-                  <span>🔊 تلفظ صوتی</span>
-                  <span>📖 مثال‌های کاربردی</span>
-                  <span>🎲 حالت تصادفی</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Level-Based Wordlists Section - NEW */}
-            <Link href="/level-based-wordlists" className="group">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-2xl cursor-pointer border-t-4 border-[#10B981] h-full">
-                <div className="p-8 text-center">
-                  <div className="text-7xl mb-4 group-hover:animate-bounce inline-block">
-                    📖
-                  </div>
-                  <h3
-                      className="text-2xl font-bold mb-3"
-                      style={{ color: "#10B981" }}
-                  >
-                    کلمات سطح‌بندی شده
-                  </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
-                    کلمات و اصطلاحات را بر اساس سطح (A1 تا C1) به صورت درس به درس
-                    یاد بگیرید!
-                  </p>
-                  <div
-                      className="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-lg transition-all group-hover:gap-3"
-                      style={{ color: "#10B981", backgroundColor: "#10B98110" }}
-                  >
-                    <span>شروع یادگیری</span>
-                    <span className="text-lg">←</span>
-                  </div>
-                </div>
-                {/* Features */}
-                <div className="bg-gray-50 px-6 py-3 flex justify-around text-xs text-gray-500 border-t border-[#ffe073]/30">
-                  <span>📊 ۵ سطح آموزشی</span>
-                  <span>📚 بیش از ۱۰۰ درس</span>
-                  <span>🏆 سیستم پیشرفت</span>
-                </div>
-              </div>
-            </Link>
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
+            <div className="text-2xl mb-2">🚀</div>
+            <p className="text-sm text-gray-600">بدون نیاز به ثبت‌نام</p>
           </div>
+          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
+            <div className="text-2xl mb-2">💎</div>
+            <p className="text-sm text-gray-600">کاملاً رایگان</p>
+          </div>
+        </div>
 
-          {/* Level Overview Section */}
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold text-center mb-8" style={{ color: "#f74697" }}>
-              سطوح آموزشی
-            </h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl p-4 text-white text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-2">🌱</div>
-                <div className="font-bold text-xl">A1</div>
-                <div className="text-xs opacity-90">مبتدی</div>
-              </div>
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl p-4 text-white text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-2">📘</div>
-                <div className="font-bold text-xl">A2</div>
-                <div className="text-xs opacity-90">ابتدایی</div>
-              </div>
-              <div className="bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl p-4 text-white text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-2">📚</div>
-                <div className="font-bold text-xl">B1</div>
-                <div className="text-xs opacity-90">متوسط</div>
-              </div>
-              <div className="bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl p-4 text-white text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-2">🎓</div>
-                <div className="font-bold text-xl">B2</div>
-                <div className="text-xs opacity-90">بالاتر از متوسط</div>
-              </div>
-              <div className="bg-gradient-to-br from-red-500 to-rose-500 rounded-xl p-4 text-white text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl mb-2">🏆</div>
-                <div className="font-bold text-xl">C1</div>
-                <div className="text-xs opacity-90">پیشرفته</div>
-              </div>
+        {/* Stats Section */}
+        <div className="mt-16 bg-gradient-to-r from-[#f74697]/10 to-[#4097f2]/10 rounded-2xl p-8 text-center">
+          <h3 className="text-2xl font-bold mb-6" style={{ color: "#f74697" }}>
+            آمار لینگو
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <div className="text-3xl font-bold text-[#f74697]">۱۰۰+</div>
+              <div className="text-sm text-gray-600">اصطلاحات کاربردی</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#4097f2]">۵</div>
+              <div className="text-sm text-gray-600">سطح آموزشی</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#10B981]">۱۰۰+</div>
+              <div className="text-sm text-gray-600">درس تعاملی</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#F59E0B]">۲۰۰۰+</div>
+              <div className="text-sm text-gray-600">کلمه و لغت</div>
             </div>
           </div>
+        </div>
+      </main>
 
-          {/* Additional Info Cards */}
-          <div className="mt-16 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-              <div className="text-2xl mb-2">🎓</div>
-              <p className="text-sm text-gray-600">
-                یادگیری تعاملی و سرگرم‌کننده
-              </p>
-            </div>
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-              <div className="text-2xl mb-2">🚀</div>
-              <p className="text-sm text-gray-600">بدون نیاز به ثبت‌نام</p>
-            </div>
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-              <div className="text-2xl mb-2">💎</div>
-              <p className="text-sm text-gray-600">کاملاً رایگان</p>
-            </div>
-          </div>
+      {/* Footer */}
 
-          {/* Stats Section */}
-          <div className="mt-16 bg-gradient-to-r from-[#f74697]/10 to-[#4097f2]/10 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold mb-6" style={{ color: "#f74697" }}>
-              آمار لینگو
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div>
-                <div className="text-3xl font-bold text-[#f74697]">۱۰۰+</div>
-                <div className="text-sm text-gray-600">اصطلاحات کاربردی</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#4097f2]">۵</div>
-                <div className="text-sm text-gray-600">سطح آموزشی</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#10B981]">۱۰۰+</div>
-                <div className="text-sm text-gray-600">درس تعاملی</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-[#F59E0B]">۲۰۰۰+</div>
-                <div className="text-sm text-gray-600">کلمه و لغت</div>
-              </div>
-            </div>
-          </div>
-        </main>
-
-        {/* Footer */}
-
-        {/* Add bounce animation */}
-        <style jsx>{`
-          @keyframes bounce {
-            0%,
-            100% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(-10px);
-            }
+      {/* Add bounce animation */}
+      <style jsx>{`
+        @keyframes bounce {
+          0%,
+          100% {
+            transform: translateY(0);
           }
-          .group:hover .group-hover\\:animate-bounce {
-            animation: bounce 0.5s ease-in-out;
+          50% {
+            transform: translateY(-10px);
           }
-        `}</style>
-      </div>
+        }
+        .group:hover .group-hover\\:animate-bounce {
+          animation: bounce 0.5s ease-in-out;
+        }
+      `}</style>
+    </div>
   );
 };
 
