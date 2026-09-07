@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import LevelsOverview from "./components/LevelsOverview";
+import FeatureHighlights from "./components/FeatureHighlights";
 
 const HomePage: React.FC = () => {
   return (
@@ -149,22 +150,7 @@ const HomePage: React.FC = () => {
         <LevelsOverview />
 
         {/* Additional Info Cards */}
-        <div className="mt-16 grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-            <div className="text-2xl mb-2">🎓</div>
-            <p className="text-sm text-gray-600">
-              یادگیری تعاملی و سرگرم‌کننده
-            </p>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-            <div className="text-2xl mb-2">🚀</div>
-            <p className="text-sm text-gray-600">بدون نیاز به ثبت‌نام</p>
-          </div>
-          <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 text-center">
-            <div className="text-2xl mb-2">💎</div>
-            <p className="text-sm text-gray-600">کاملاً رایگان</p>
-          </div>
-        </div>
+        <FeatureHighlights />
 
         {/* Stats Section */}
         <div className="mt-16 bg-gradient-to-r from-[#f74697]/10 to-[#4097f2]/10 rounded-2xl p-8 text-center">
