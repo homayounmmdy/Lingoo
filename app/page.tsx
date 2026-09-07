@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import React from "react";
-import LevelsOverview from "./components/LevelsOverview";
 import FeatureHighlights from "./components/FeatureHighlights";
+import LevelsOverview from "./components/LevelsOverview";
+import StatsSection from "./components/StatsSection";
 
 const HomePage: React.FC = () => {
   return (
@@ -146,36 +147,9 @@ const HomePage: React.FC = () => {
           </Link>
         </div>
 
-        {/* Level Overview Section */}
         <LevelsOverview />
-
-        {/* Additional Info Cards */}
         <FeatureHighlights />
-
-        {/* Stats Section */}
-        <div className="mt-16 bg-gradient-to-r from-[#f74697]/10 to-[#4097f2]/10 rounded-2xl p-8 text-center">
-          <h3 className="text-2xl font-bold mb-6" style={{ color: "#f74697" }}>
-            آمار لینگو
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div>
-              <div className="text-3xl font-bold text-[#f74697]">۱۰۰+</div>
-              <div className="text-sm text-gray-600">اصطلاحات کاربردی</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#4097f2]">۵</div>
-              <div className="text-sm text-gray-600">سطح آموزشی</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#10B981]">۱۰۰+</div>
-              <div className="text-sm text-gray-600">درس تعاملی</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#F59E0B]">۲۰۰۰+</div>
-              <div className="text-sm text-gray-600">کلمه و لغت</div>
-            </div>
-          </div>
-        </div>
+        <StatsSection />
       </main>
 
       {/* Footer */}
