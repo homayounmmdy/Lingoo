@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import FeatureHighlights from "./components/FeatureHighlights";
+import HeroSection from "./components/HeroSection";
 import LevelsOverview from "./components/LevelsOverview";
 import StatsSection from "./components/StatsSection";
 
@@ -28,19 +29,7 @@ const HomePage: React.FC = () => {
       </header>
 
       <main className="max-w-6xl mx-auto px-4 pt-12">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <div className="text-6xl mb-4">🌟</div>
-          <h2
-            className="text-3xl md:text-4xl font-bold mb-3"
-            style={{ color: "#f74697" }}
-          >
-            به لینگو خوش آمدید!
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            با روشی سرگرم‌کننده و جذاب، اصطلاحات و گرامر انگلیسی را یاد بگیرید
-          </p>
-        </div>
+        <HeroSection />
 
         {/* Three Main Sections */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
