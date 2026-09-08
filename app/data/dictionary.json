@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-09-09T00:00:00.000Z",
+  "entries": [
+    {
+      "word": "hello",
+      "meaning": "used as a greeting",
+      "phonetic": "/həˈloʊ/",
+      "example": "Hello, how are you?",
+      "exampleMeaning": "A standard greeting to ask someone's wellbeing",
+      "cefrLevel": "A1"
+    },
+    {
+      "word": "abandon",
+      "meaning": "to leave a place or person permanently",
+      "phonetic": "/əˈbændən/",
+      "example": "They had to abandon the sinking ship.",
+      "exampleMeaning": "They were forced to leave the ship that was going down",
+      "cefrLevel": "B2"
+    },
+    {
+      "word": "ability",
+      "meaning": "the power or skill to do something",
+      "phonetic": "/əˈbɪləti/",
+      "example": "She has the ability to learn quickly.",
+      "exampleMeaning": "She possesses the skill to acquire knowledge fast",
+      "cefrLevel": "A2"
+    },
+    {
+      "word": "run",
+      "meaning": "to move faster than walking",
+      "phonetic": "/rʌn/",
+      "example": "I run every morning.",
+      "exampleMeaning": "I jog each day in the morning",
+      "cefrLevel": "A1"
+    },
+    {
+      "word": "running",
+      "meaning": "the activity of moving quickly on foot",
+      "phonetic": "/ˈrʌnɪŋ/",
+      "example": "Running is good for your health.",
+      "exampleMeaning": "Jogging benefits your physical wellbeing",
+      "cefrLevel": "A2"
+    },
+    {
+      "word": "runner",
+      "meaning": "a person who runs",
+      "phonetic": "/ˈrʌnər/",
+      "example": "The runner finished first.",
+      "exampleMeaning": "The person running came in first place",
+      "cefrLevel": "A2"
+    },
+    {
+      "word": "ubiquitous",
+      "meaning": "present, appearing, or found everywhere",
+      "phonetic": "/juːˈbɪkwɪtəs/",
+      "example": "Smartphones have become ubiquitous.",
+      "exampleMeaning": "Mobile phones are now found everywhere",
+      "cefrLevel": "C1"
+    },
+    {
+      "word": "ephemeral",
+      "meaning": "lasting for a very short time",
+      "phonetic": "/ɪˈfemərəl/",
+      "example": "Fame can be ephemeral.",
+      "exampleMeaning": "Being famous can be very short-lived",
+      "cefrLevel": "C2"
+    }
+  ]
+}
