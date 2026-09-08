@@ -3,6 +3,7 @@ import { useState, useMemo, useEffect } from "react";
 import { DictionaryManager } from "./DictionaryManager";
 import { DictionaryJSON, DictionaryEntry, CEFRLevel } from "@/app/types/dictionary";
 import dictionaryData from "../../data/dictionary.json";
+import { Button } from "@/app/components/ui/button";
 
 // Initialize manager once outside component to persist across renders
 const dictManager = new DictionaryManager();
@@ -40,7 +41,7 @@ export default function App() {
   // Memoized results
   const displayResults = useMemo(() => {
     let results: DictionaryEntry[] = [];
-    
+
     if (debouncedQuery.trim().length > 0) {
       const exact = dictManager.lookup(debouncedQuery);
       const auto = dictManager.autocomplete(debouncedQuery, 50);
@@ -50,7 +51,7 @@ export default function App() {
     } else {
       results = dictManager.getAllWords();
     }
-    
+
     return results;
   }, [debouncedQuery, selectedCefr]);
 
@@ -65,7 +66,7 @@ export default function App() {
     // ✅ dir="rtl" ensures proper Persian layout
     <div className="min-h-screen bg-slate-50 text-slate-800" dir="rtl">
       <div className="mx-auto max-w-6xl p-6 space-y-8">
-        
+
         {/* ─── Header & Stats ─── */}
         <header className="animate-fadeIn space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -85,25 +86,21 @@ export default function App() {
 
           {/* ─── CEFR Filters ─── */}
           <div className="flex flex-wrap gap-3">
-            <button
+            <Button
               onClick={() => setSelectedCefr("همه")}
-              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover-scale border ${
-                selectedCefr === "همه"
-                  ? "bg-[#f74697] text-white border-[#f74697] shadow-md shadow-pink-200"
-                  : "bg-white text-slate-600 border-slate-200 hover:border-[#f74697] hover:text-[#f74697]"
-              }`}
+              variant={selectedCefr === "همه" ? "default" : "outline"}
+              size="sm"
+              className="gap-2"
             >
               همه سطوح
-            </button>
+            </Button>
             {CEFR_LEVELS.map((level, index) => (
-              <button
+              <Button
                 key={level}
                 onClick={() => setSelectedCefr(level)}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 hover-scale border flex items-center gap-2 animate-fadeIn ${
-                  selectedCefr === level
-                    ? "bg-[#f74697] text-white border-[#f74697] shadow-md shadow-pink-200"
-                    : "bg-white text-slate-600 border-slate-200 hover:border-[#f74697] hover:text-[#f74697]"
-                }`}
+                variant={selectedCefr === level ? "default" : "outline"}
+                size="sm"
+                className="gap-2 animate-fadeIn"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <span className={`w-2 h-2 rounded-full ${
@@ -115,7 +112,7 @@ export default function App() {
                 }`}></span>
                 سطح {level}
                 <span className="text-xs opacity-70">({stats[level]})</span>
-              </button>
+              </Button>
             ))}
           </div>
         </header>
@@ -147,14 +144,14 @@ export default function App() {
 
         {/* ─── Main Content Grid ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
+
           {/* Right Column (in RTL): Results List */}
           <div className="lg:col-span-7 space-y-4 animate-fadeIn delay-200">
             <h2 className="text-lg font-bold text-slate-700 flex items-center gap-2">
               {debouncedQuery ? `نتایج جستجو برای "${debouncedQuery}"` : selectedCefr !== "همه" ? `واژگان سطح ${selectedCefr}` : "واژگان پیشنهادی"}
               <span className="text-sm font-normal text-slate-400">({displayResults.length})</span>
             </h2>
-            
+
             {displayResults.length === 0 ? (
               <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center shadow-sm animate-fadeIn">
                 <p className="text-slate-500">واژه‌ای با این مشخصات یافت نشد.</p>
@@ -206,7 +203,7 @@ export default function App() {
                       <h3 className="text-xs font-bold uppercase tracking-widest text-[#f74697] mb-2">معنی</h3>
                       <p className="text-slate-700 text-lg leading-relaxed">{selectedWord.meaning}</p>
                     </div>
-                    
+
                     {/* ✅ border-s-4 and rounded-e-xl for proper RTL styling */}
                     <div className="bg-slate-50 border-s-4 border-[#f74697] rounded-e-xl p-5">
                       <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">مثال</h3>
@@ -238,19 +235,21 @@ export default function App() {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {relatedWords.map((rel) => (
-                      <button
+                      <Button
                         key={rel.word}
                         onClick={() => {
                           setSelectedWord(rel);
                           setSearchQuery(rel.word);
                         }}
-                        className="group flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium transition-all duration-200 hover:border-[#f74697] hover:bg-pink-50 hover:text-[#f74697] hover-scale"
+                        variant="secondary"
+                        size="sm"
+                        className="gap-2"
                       >
                         <span className="ltr:order-2">{rel.word}</span>
                         <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${CEFR_BADGE_COLORS[rel.cefrLevel]}`}>
                           {rel.cefrLevel}
                         </span>
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>
@@ -299,7 +298,7 @@ function WordCard({ entry, isSelected, onClick, index }: WordCardProps) {
       <p className="text-slate-600 text-sm mt-2 line-clamp-2 leading-relaxed">
         {entry.meaning}
       </p>
-      
+
       {/* Active/Hover Indicator Dot */}
       <div className={`absolute end-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f74697] transition-opacity duration-200 ${
         isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
