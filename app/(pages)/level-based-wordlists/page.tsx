@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import AppConfig from "@/app/config/app";
 
 interface Level {
   id: string;
@@ -94,7 +95,7 @@ const LevelBasedWordlists: React.FC = () => {
           <div className="flex items-center justify-between flex-wrap gap-4">
             <Link href="/" className="flex items-center gap-2">
               <span className="text-3xl">🦜</span>
-              <h1 className="text-2xl font-bold text-[#f74697]">لینگو</h1>
+              <h1 className="text-2xl font-bold text-[#f74697]">{AppConfig.name}</h1>
             </Link>
             
             <Link href="/">

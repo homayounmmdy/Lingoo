@@ -1,10 +1,11 @@
 import React from "react";
+import AppConfig from "../config/app";
 
 const StatsSection: React.FC = () => {
   return (
     <div className="mt-16 bg-linear-to-r from-[#f74697]/10 to-[#4097f2]/10 rounded-2xl p-8 text-center">
       <h3 className="text-2xl font-bold mb-6" style={{ color: "#f74697" }}>
-        آمار لینگو
+        آمار {AppConfig.name}
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {stats.map((stat, index) => (

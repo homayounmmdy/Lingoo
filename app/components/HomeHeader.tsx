@@ -1,4 +1,5 @@
 import React from "react";
+import AppConfig from "../config/app";
 
 const HomeHeader: React.FC = () => {
   return (
@@ -8,7 +9,7 @@ const HomeHeader: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="text-3xl">🦜</span>
             <h1 className="text-2xl font-bold" style={{ color: "#f74697" }}>
-              لینگو
+              {AppConfig.name}
             </h1>
           </div>
           <div className="text-sm text-gray-500">یادگیری زبان با لذت</div>

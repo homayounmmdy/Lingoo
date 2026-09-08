@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SortControls } from "./SortControls";
+import AppConfig from "@/app/config/app";
 
 interface IdiomsHeaderProps {
   sortOrder: "order" | "random";
@@ -21,7 +22,7 @@ export const IdiomsHeader: React.FC<IdiomsHeaderProps> = ({
           <Link href="/" className="flex items-center gap-2">
             <span className="text-3xl">🦜</span>
             <h1 className="text-2xl font-bold" style={{ color: "#f74697" }}>
-              لینگو
+              {AppConfig.name}
             </h1>
           </Link>
 
